@@ -1,0 +1,25 @@
+﻿namespace MyLibrary.Models
+{
+    public class Book
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public int NumberISBN { get; set; }
+        public int Pages { get; set; }
+        public DateTime PublicationDate { get; set; }
+        public string Publisher { get; set; }
+        public string Language { get; set; }
+        public string Format { get; set; }
+        // format(paperbag, e-book, audiobook)
+        public string Description { get; set; }
+        public bool ReadingStatus { get; set; }
+        // or public string ReadingStatus { get; set; } - read, not read, while reading
+
+        public int AuthorId { get; set; }
+        public virtual Author Author { get; set; }
+
+        public virtual Category Category { get; set; }
+
+
+    }
+}
