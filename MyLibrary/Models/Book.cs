@@ -22,6 +22,5 @@
 
         public Publisher Publisher { get; set; }
 
-
     }
 }
