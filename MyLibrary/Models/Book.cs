@@ -7,8 +7,8 @@
         public int NumberISBN { get; set; }
         public int Pages { get; set; }
         public DateTime PublicationDate { get; set; }
-        public string Publisher { get; set; }
         public string Language { get; set; }
+        public string Category { get; set; }
         public string Format { get; set; }
         // format(paperbag, e-book, audiobook)
         public string Description { get; set; }
@@ -16,9 +16,11 @@
         // or public string ReadingStatus { get; set; } - read, not read, while reading
 
         public int AuthorId { get; set; }
-        public virtual Author Author { get; set; }
+        public Author Author { get; set; }
 
-        public virtual Category Category { get; set; }
+        public int PublisherId { get; set; }
+
+        public Publisher Publisher { get; set; }
 
 
     }

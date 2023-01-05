@@ -8,8 +8,8 @@
         public string Country { get; set; }
         public string AuthorBiography { get; set; }
 
-        public int BookId { get; set; }
-        public virtual Book Book { get; set; }
+        public List<Book> Books { get; set; }
+        
 
     }
 }
