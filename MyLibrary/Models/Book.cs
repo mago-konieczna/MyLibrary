@@ -8,6 +8,7 @@
         public int Pages { get; set; }
         public DateTime PublicationDate { get; set; }
         public string Language { get; set; }
+        //the language of this book in the library 
         public string Category { get; set; }
         public string Format { get; set; }
         // format(paperbag, e-book, audiobook)
