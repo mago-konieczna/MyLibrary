@@ -80,7 +80,7 @@ namespace MyLibrary.Controllers
             _context.Publishers.Add(publisher);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetPublisher", new { id = publisher.Id }, publisher);
+            return CreatedAtAction(nameof(GetPublisher), new { id = publisher.Id }, publisher);
         }
 
         // DELETE: api/Publisher/5
