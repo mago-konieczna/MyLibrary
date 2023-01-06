@@ -7,7 +7,8 @@
         /* may add more properties in the future for example: Country, Adress, ContactEmail, ContactNumber */
 
 
-        public List<Book> Books { get; set; }
+        public int BookId { get; set; }
+        public Book Book { get; set; }
 
 
 

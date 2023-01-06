@@ -16,12 +16,10 @@
         public bool ReadingStatus { get; set; }
         // or public string ReadingStatus { get; set; } - read, not read, while reading
 
-        public int AuthorId { get; set; }
-        public Author Author { get; set; }
+        public List<Author> Authors { get; set; }
+        public List<Publisher> Publishers { get; set; }
 
-        public int PublisherId { get; set; }
-
-        public Publisher Publisher { get; set; }
+        
 
     }
 }
