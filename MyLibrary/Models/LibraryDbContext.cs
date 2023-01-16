@@ -5,6 +5,7 @@ namespace MyLibrary.Models
 {
     public class LibraryDbContext : DbContext   
     {
+        private string _connectionString = "Server=(localdb)\\mssqllocaldb;Database=LibraryDb;Trusted_Connection=True;";
         public LibraryDbContext(DbContextOptions<LibraryDbContext> options)
        : base(options)
         {
@@ -12,6 +13,14 @@ namespace MyLibrary.Models
 
         public DbSet<Book> Books { get; set; }  
        public DbSet<Author> Authors { get; set; }  
-        public DbSet<Publisher> Publishers { get; set; }  
+        public DbSet<Publisher> Publishers { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(_connectionString);
+        }
+
     }
+
+    
 }
