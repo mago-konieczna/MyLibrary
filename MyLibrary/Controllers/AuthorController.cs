@@ -14,19 +14,19 @@ namespace MyLibrary.Controllers
     [ApiController]
     public class AuthorController : ControllerBase
     {
-       /* private IAuthorRepository authorRepository;
-        public AuthorController(IAuthorRepository authorRepository)
-        {
-            this.authorRepositoryauthorRepository = authorRepository;   
-        }*/
-        
+        /* private IAuthorRepository authorRepository;
+         public AuthorController(IAuthorRepository authorRepository)
+         {
+             this.authorRepositoryauthorRepository = authorRepository;   
+         }*/
 
-        private readonly LibraryDbContext _context;
+
+       // private readonly LibraryDbContext _context;
         private readonly IAuthorRepository _authorRepository;
 
-        public AuthorController(LibraryDbContext context, IAuthorRepository authorRepository)
+        public AuthorController(AuthorRepository authorRepository1, IAuthorRepository authorRepository)
         {
-            _context = context;
+            _authorRepository = authorRepository1;
             _authorRepository = authorRepository;
         }
 
