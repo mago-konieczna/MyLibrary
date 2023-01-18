@@ -5,7 +5,7 @@ namespace MyLibrary.Services.AuthorRepository
 {
     public interface IAuthorRepository
     {
-       
+        IEnumerable<Author> GetAll();
 
     }
 }

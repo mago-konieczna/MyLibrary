@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyLibrary.Models;
+using MyLibrary.Services.AuthorRepository;
 
 namespace MyLibrary.Controllers
 {
@@ -13,18 +14,28 @@ namespace MyLibrary.Controllers
     [ApiController]
     public class AuthorController : ControllerBase
     {
-        private readonly LibraryDbContext _context;
+       /* private IAuthorRepository authorRepository;
+        public AuthorController(IAuthorRepository authorRepository)
+        {
+            this.authorRepositoryauthorRepository = authorRepository;   
+        }*/
+        
 
-        public AuthorController(LibraryDbContext context)
+        private readonly LibraryDbContext _context;
+        private readonly IAuthorRepository _authorRepository;
+
+        public AuthorController(LibraryDbContext context, IAuthorRepository authorRepository)
         {
             _context = context;
+            _authorRepository = authorRepository;
         }
 
         // GET: api/Author
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Author>>> GetAuthors()
         {
-            return await _context.Authors.ToListAsync();
+            return _authorRepository.GetAll();
+            //return await _context.Authors.ToListAsync();
         }
 
         // GET: api/Author/5
