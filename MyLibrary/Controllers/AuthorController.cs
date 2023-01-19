@@ -34,7 +34,7 @@ namespace MyLibrary.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Author>>> GetAuthors()
         {
-            return _authorRepository.GetAll();
+            return Ok(_authorRepository.GetAll());
             //return await _context.Authors.ToListAsync();
         }
 
@@ -42,14 +42,14 @@ namespace MyLibrary.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Author>> GetAuthor(int id)
         {
-            var author = await _context.Authors.FindAsync(id);
+            var author = _authorRepository.GetAuthor(id);
 
             if (author == null)
             {
                 return NotFound();
             }
 
-            return author;
+            return Ok(author);
         }
 
         // PUT: api/Author/5
@@ -62,11 +62,11 @@ namespace MyLibrary.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(author).State = EntityState.Modified;
+            _authorRepository.PutAuthor(id, author).Id = (int)EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                 _authorRepository.Save();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -88,8 +88,8 @@ namespace MyLibrary.Controllers
         [HttpPost]
         public async Task<ActionResult<Author>> PostAuthor(Author author)
         {
-            _context.Authors.Add(author);
-            await _context.SaveChangesAsync();
+            _authorRepository.PostAuthor(author);
+            _authorRepository.Save();
 
             return CreatedAtAction(nameof(GetAuthor), new { id = author.Id }, author);
         }
@@ -98,21 +98,21 @@ namespace MyLibrary.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAuthor(int id)
         {
-            var author = await _context.Authors.FindAsync(id);
+            var author = _authorRepository.GetAuthor(id);
             if (author == null)
             {
                 return NotFound();
             }
 
-            _context.Authors.Remove(author);
-            await _context.SaveChangesAsync();
+            _authorRepository.DeleteAuthor(id);
+            _authorRepository.Save();
 
             return NoContent();
         }
 
         private bool AuthorExists(int id)
         {
-            return _context.Authors.Any(e => e.Id == id);
+            return _authorRepository.AuthorExists(id);
         }
     }
 }
