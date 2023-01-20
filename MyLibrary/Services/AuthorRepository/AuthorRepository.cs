@@ -29,11 +29,6 @@ namespace MyLibrary.Services.AuthorRepository
             return _context.Authors.Find(id, author);
         }
 
-        public void Save()
-        {
-            _context.SaveChanges();
-        }
-
         public void PostAuthor(Author author)
         {
             _context.Authors.Add(author);
@@ -48,6 +43,11 @@ namespace MyLibrary.Services.AuthorRepository
         public bool AuthorExists(int id)
         {
             return _context.Authors.Any(e => e.Id == id);
+        }
+
+        public void Save()
+        {
+            _context.SaveChanges();
         }
 
 

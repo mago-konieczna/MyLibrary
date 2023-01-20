@@ -14,21 +14,21 @@ namespace MyLibrary.Controllers
     [ApiController]
     public class AuthorController : ControllerBase
     {
-        /* private IAuthorRepository authorRepository;
+         private IAuthorRepository _authorRepository;
          public AuthorController(IAuthorRepository authorRepository)
          {
-             this.authorRepositoryauthorRepository = authorRepository;   
-         }*/
+             _authorRepository = authorRepository;   
+         }
 
 
        // private readonly LibraryDbContext _context;
-        private readonly IAuthorRepository _authorRepository;
+      /*  private readonly IAuthorRepository _authorRepository;
 
         public AuthorController(AuthorRepository authorRepository1, IAuthorRepository authorRepository)
         {
             _authorRepository = authorRepository1;
             _authorRepository = authorRepository;
-        }
+        }*/
 
         // GET: api/Author
         [HttpGet]
