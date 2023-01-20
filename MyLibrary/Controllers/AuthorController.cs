@@ -21,15 +21,6 @@ namespace MyLibrary.Controllers
          }
 
 
-       // private readonly LibraryDbContext _context;
-      /*  private readonly IAuthorRepository _authorRepository;
-
-        public AuthorController(AuthorRepository authorRepository1, IAuthorRepository authorRepository)
-        {
-            _authorRepository = authorRepository1;
-            _authorRepository = authorRepository;
-        }*/
-
         // GET: api/Author
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Author>>> GetAuthors()

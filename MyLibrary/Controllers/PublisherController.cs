@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyLibrary.Models;
+using MyLibrary.Services.PublishersRepository;
 
 namespace MyLibrary.Controllers
 {
@@ -13,49 +14,50 @@ namespace MyLibrary.Controllers
     [ApiController]
     public class PublisherController : ControllerBase
     {
-        private readonly LibraryDbContext _context;
+        private IPublishersRepository _publishersRepository;
 
-        public PublisherController(LibraryDbContext context)
+        public PublisherController(IPublishersRepository publishersRepository)
         {
-            _context = context;
+            _publishersRepository = publishersRepository;
         }
+
 
         // GET: api/Publisher
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Publisher>>> GetPublishers()
+        public async Task<ActionResult<IEnumerable<Publishers>>> GetPublishers()
         {
-            return await _context.Publishers.ToListAsync();
+            return Ok(_publishersRepository.GetAll());
         }
 
         // GET: api/Publisher/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Publisher>> GetPublisher(int id)
+        public async Task<ActionResult<Publishers>> GetPublishers(int id)
         {
-            var publisher = await _context.Publishers.FindAsync(id);
+            var publishers = _publishersRepository.GetPublishers(id);
 
-            if (publisher == null)
+            if (publishers == null)
             {
                 return NotFound();
             }
 
-            return publisher;
+            return Ok(publishers);
         }
 
         // PUT: api/Publisher/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPublisher(int id, Publisher publisher)
+        public async Task<IActionResult> PutPublishers(int id, Publishers publishers)
         {
-            if (id != publisher.Id)
+            if (id != publishers.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(publisher).State = EntityState.Modified;
+            _publishersRepository.PutPublishers(id, publishers).Id = (int)EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                _publishersRepository.Save();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -75,33 +77,33 @@ namespace MyLibrary.Controllers
         // POST: api/Publisher
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Publisher>> PostPublisher(Publisher publisher)
+        public async Task<ActionResult<Publishers>> PostPublishers(Publishers publishers)
         {
-            _context.Publishers.Add(publisher);
-            await _context.SaveChangesAsync();
+            _publishersRepository.PostPublishers(publishers);
+            _publishersRepository.Save();
 
-            return CreatedAtAction(nameof(GetPublisher), new { id = publisher.Id }, publisher);
+            return CreatedAtAction(nameof(GetPublishers), new { id = publishers.Id }, publishers);
         }
 
         // DELETE: api/Publisher/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePublisher(int id)
+        public async Task<IActionResult> DeletePublishers(int id)
         {
-            var publisher = await _context.Publishers.FindAsync(id);
-            if (publisher == null)
+            var publishers = _publishersRepository.GetPublishers(id);
+            if (publishers == null)
             {
                 return NotFound();
             }
 
-            _context.Publishers.Remove(publisher);
-            await _context.SaveChangesAsync();
+           _publishersRepository.DeletePublishers(id);
+            _publishersRepository.Save();
 
             return NoContent();
         }
 
         private bool PublisherExists(int id)
         {
-            return _context.Publishers.Any(e => e.Id == id);
+            return _publishersRepository.PublishersExists(id);
         }
     }
 }

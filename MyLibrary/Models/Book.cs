@@ -17,7 +17,7 @@
         // or public string ReadingStatus { get; set; } - read, not read, while reading
 
         public List<Author> Authors { get; set; }
-        public List<Publisher> Publishers { get; set; }
+        public List<Publishers> Publishers { get; set; }
 
         
 

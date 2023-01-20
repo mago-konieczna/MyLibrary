@@ -1,6 +1,6 @@
 ﻿namespace MyLibrary.Models
 {
-    public class Publisher
+    public class Publishers
     {
         public int Id { get; set; } 
         public string PublisherName { get; set; }
