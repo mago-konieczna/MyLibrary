@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyLibrary.Models;
-using MyLibrary.Services.AuthorRepository;
+using MyLibrary.Services.Interfaces;
 
 namespace MyLibrary.Controllers
 {
@@ -33,7 +33,7 @@ namespace MyLibrary.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Author>> GetAuthor(int id)
         {
-            var author = _authorRepository.GetAuthor(id);
+            var author =  _authorRepository.GetAuthor(id);
 
             if (author == null)
             {

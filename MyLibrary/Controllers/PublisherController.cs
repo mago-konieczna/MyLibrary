@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyLibrary.Models;
-using MyLibrary.Services.PublishersRepository;
+using MyLibrary.Services.Interfaces;
 
 namespace MyLibrary.Controllers
 {

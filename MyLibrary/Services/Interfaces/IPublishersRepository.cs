@@ -1,7 +1,7 @@
 ﻿using MyLibrary.Models;
 using System.Security.Policy;
 
-namespace MyLibrary.Services.PublishersRepository
+namespace MyLibrary.Services.Interfaces
 {
     public interface IPublishersRepository
     {

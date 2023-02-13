@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyLibrary.Models;
+using MyLibrary.Services.Interfaces;
 
-namespace MyLibrary.Services.AuthorRepository
+namespace MyLibrary.Services
 {
     public class AuthorRepository : IAuthorRepository
     {

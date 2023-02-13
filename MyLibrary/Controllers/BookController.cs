@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyLibrary.Models;
 using MyLibrary.Services.AuthorRepository;
-using MyLibrary.Services.BookRepository;
+using MyLibrary.Services.Interfaces;
 
 namespace MyLibrary.Controllers
 {

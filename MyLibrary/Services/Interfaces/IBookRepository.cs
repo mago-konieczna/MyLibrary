@@ -1,6 +1,6 @@
 ﻿using MyLibrary.Models;
 
-namespace MyLibrary.Services.BookRepository
+namespace MyLibrary.Services.Interfaces
 {
     public interface IBookRepository
     {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyLibrary.Models;
 
-namespace MyLibrary.Services.AuthorRepository
+namespace MyLibrary.Services.Interfaces
 {
     public interface IAuthorRepository
     {
@@ -9,7 +9,7 @@ namespace MyLibrary.Services.AuthorRepository
         Author GetAuthor(int id);
         Author PutAuthor(int id, Author author);
         void PostAuthor(Author author);
-        void DeleteAuthor(int id);  
+        void DeleteAuthor(int id);
         void Save();
         bool AuthorExists(int id);
     }

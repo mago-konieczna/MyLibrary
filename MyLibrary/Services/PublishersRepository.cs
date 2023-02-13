@@ -1,9 +1,10 @@
 ﻿using MyLibrary.Controllers;
 using MyLibrary.Models;
+using MyLibrary.Services.Interfaces;
 
-namespace MyLibrary.Services.PublishersRepository
+namespace MyLibrary.Services
 {
-    public class PublishersRepository : IPublishersRepository 
+    public class PublishersRepository : IPublishersRepository
     {
         private readonly LibraryDbContext _context;
 

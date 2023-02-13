@@ -7,9 +7,12 @@
         public string LastName { get; set; }
         public string Country { get; set; }
 
-        public int BookId { get; set; } 
-        public Book Book { get; set; }
+       
         
+
+        public List<Book> Books { get; set; }   
+
+
 
     }
 }
