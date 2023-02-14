@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyLibrary.Models;
-using MyLibrary.Services.AuthorRepository;
 using MyLibrary.Services.Interfaces;
 
 namespace MyLibrary.Controllers
@@ -15,8 +14,6 @@ namespace MyLibrary.Controllers
     [ApiController]
     public class BookController : ControllerBase
     {
-
-
         private readonly IBookRepository _bookRepository;
 
         public BookController(IBookRepository bookRepository)
@@ -24,6 +21,7 @@ namespace MyLibrary.Controllers
             _bookRepository = bookRepository;
         }
 
+       
         // GET: api/Book
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Book>>> GetBooks()
