@@ -18,8 +18,6 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IPublishersRepository, PublishersRepository>();
-builder.Services.AddScoped<LibrarySeeder>();
-builder.Services.AddDbContext<LibraryDbContext>();
 
 var app = builder.Build();
 
