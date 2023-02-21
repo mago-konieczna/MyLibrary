@@ -79,7 +79,13 @@ namespace MyLibrary.Controllers
         [HttpPost]
         public async Task<ActionResult<Publishers>> PostPublishers(Publishers publishers)
         {
-            _publishersRepository.PostPublishers(publishers);
+            var newPublishers = new Publishers()
+            { Id = publishers.Id,
+            PublisherName = publishers.PublisherName,
+            Books = new()
+            }; 
+
+            _publishersRepository.PostPublishers(newPublishers);
             _publishersRepository.Save();
 
             return CreatedAtAction(nameof(GetPublishers), new { id = publishers.Id }, publishers);

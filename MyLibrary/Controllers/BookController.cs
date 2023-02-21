@@ -79,7 +79,22 @@ namespace MyLibrary.Controllers
         [HttpPost]
         public async Task<ActionResult<Book>> PostBook(Book book)
         {
-            _bookRepository.PostBook(book);
+            var newBook = new Book()
+            {
+                Id = book.Id,
+                Title = book.Title,
+                NumberISBN = book.NumberISBN,
+                Pages = book.Pages,
+                PublicationDate = book.PublicationDate,
+                Language = book.Language,
+                Category = book.Category,
+                Format = book.Format,
+                Description = book.Description,
+                ReadingStatus = book.ReadingStatus,
+                Authors = book.Authors,
+                Publishers = book.Publishers,   
+            };
+            _bookRepository.PostBook(newBook);
             _bookRepository.Save();
 
             return CreatedAtAction(nameof(GetBook), new { id = book.Id }, book);
