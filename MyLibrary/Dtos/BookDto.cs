@@ -12,5 +12,8 @@
         public string Format { get; set; }
         public string Description { get; set; }
         public bool ReadingStatus { get; set; }
+
+        public List<AuthorDto> Authors { get; set; }
+        public List<PublisherDto> Publishers { get; set; }
     }
 }
