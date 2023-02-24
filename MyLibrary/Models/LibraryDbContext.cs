@@ -10,7 +10,7 @@ namespace MyLibrary.Models
        : base(options) { }
         public DbSet<Book> Books { get; set; }
         public DbSet<Author> Authors { get; set; }
-        public DbSet<Publishers> Publishers { get; set; }
+        public DbSet<Publisher> Publishers { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(_connectionString);
@@ -25,8 +25,8 @@ namespace MyLibrary.Models
                     LastName = "Tolkien",
                     Country = "Wielka Brytania",
                 });
-            modelBuilder.Entity<Publishers>().HasData(
-                new Publishers
+            modelBuilder.Entity<Publisher>().HasData(
+                new Publisher
                 {
                     Id = 1,
                     PublisherName = "Wydawnictwo Iskry"

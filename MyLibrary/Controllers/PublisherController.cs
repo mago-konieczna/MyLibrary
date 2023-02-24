@@ -24,14 +24,14 @@ namespace MyLibrary.Controllers
 
         // GET: api/Publisher
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Publishers>>> GetPublishers()
+        public async Task<ActionResult<IEnumerable<Publisher>>> GetPublishers()
         {
             return Ok(_publishersRepository.GetAll());
         }
 
         // GET: api/Publisher/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Publishers>> GetPublishers(int id)
+        public async Task<ActionResult<Publisher>> GetPublishers(int id)
         {
             var publishers = _publishersRepository.GetPublishers(id);
 
@@ -46,7 +46,7 @@ namespace MyLibrary.Controllers
         // PUT: api/Publisher/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPublishers(int id, Publishers publishers)
+        public async Task<IActionResult> PutPublishers(int id, Publisher publishers)
         {
             if (id != publishers.Id)
             {
@@ -77,9 +77,9 @@ namespace MyLibrary.Controllers
         // POST: api/Publisher
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Publishers>> PostPublishers(Publishers publishers)
+        public async Task<ActionResult<Publisher>> PostPublishers(Publisher publishers)
         {
-            var newPublishers = new Publishers()
+            var newPublishers = new Publisher()
             { Id = publishers.Id,
             PublisherName = publishers.PublisherName,
             Books = new()

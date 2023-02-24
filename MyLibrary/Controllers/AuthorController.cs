@@ -51,16 +51,8 @@ namespace MyLibrary.Controllers
         // PUT: api/Author/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public Author PutAuthor(int id, Author author)
-        {
-            var existingAuthor = _context.Authors.Find(id); if (existingAuthor is not null)
-            {
-                _context.Entry(author).CurrentValues.SetValues(author);
-                return existingAuthor;
-            }
-            return default;
-        }
-        /* public async Task<IActionResult> PutAuthor(int id, Author author)
+       
+        public async Task<IActionResult> PutAuthor(int id, Author author)
          {
 
              if (id != author.Id)
@@ -87,7 +79,7 @@ namespace MyLibrary.Controllers
              }
 
              return NoContent();
-         }*/
+         }
 
         // POST: api/Author
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

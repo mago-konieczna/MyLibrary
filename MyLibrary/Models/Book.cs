@@ -16,7 +16,7 @@ namespace MyLibrary.Models
         public bool ReadingStatus { get; set; }
         [JsonIgnore]
         public List<Author> Authors { get; set; }
-        public List<Publishers> Publishers { get; set; }
+        public List<Publisher> Publishers { get; set; }
 
         
 
