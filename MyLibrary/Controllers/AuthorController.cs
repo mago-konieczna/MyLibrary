@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MyLibrary.Dtos;
 using MyLibrary.Models;
 using MyLibrary.Services.Interfaces;
 using static System.Reflection.Metadata.BlobBuilder;
@@ -30,8 +31,7 @@ namespace MyLibrary.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Author>>> GetAuthors()
         {
-            return Ok(_authorRepository.GetAll());
-            //return await _context.Authors.ToListAsync();
+            return Ok(_authorRepository.GetAll());       
         }
 
         // GET: api/Author/5
