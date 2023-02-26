@@ -24,7 +24,12 @@ namespace MyLibrary.Services
 
         public Book PutBook(int id, Book book)
         {
-            return _context.Books.Find(id, book);
+            var existingBook = _context.Books.Find(id); if (existingBook is not null)
+            {
+                _context.Entry(book).CurrentValues.SetValues(book);
+                return existingBook;
+            }
+            return default;
         }
 
         public void PostBook(Book book)

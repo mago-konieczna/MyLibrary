@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyLibrary.Models;
 
@@ -11,9 +12,11 @@ using MyLibrary.Models;
 namespace MyLibrary.Migrations
 {
     [DbContext(typeof(LibraryDbContext))]
-    partial class LibraryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230218161011_SeedingData")]
+    partial class SeedingData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,7 +40,7 @@ namespace MyLibrary.Migrations
                     b.ToTable("AuthorBook");
                 });
 
-            modelBuilder.Entity("BookPublisher", b =>
+            modelBuilder.Entity("BookPublishers", b =>
                 {
                     b.Property<int>("BooksId")
                         .HasColumnType("int");
@@ -49,7 +52,7 @@ namespace MyLibrary.Migrations
 
                     b.HasIndex("PublishersId");
 
-                    b.ToTable("BookPublisher");
+                    b.ToTable("BookPublishers");
                 });
 
             modelBuilder.Entity("MyLibrary.Models.Author", b =>
@@ -146,7 +149,7 @@ namespace MyLibrary.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MyLibrary.Models.Publisher", b =>
+            modelBuilder.Entity("MyLibrary.Models.Publishers", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -185,7 +188,7 @@ namespace MyLibrary.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("BookPublisher", b =>
+            modelBuilder.Entity("BookPublishers", b =>
                 {
                     b.HasOne("MyLibrary.Models.Book", null)
                         .WithMany()
@@ -193,7 +196,7 @@ namespace MyLibrary.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MyLibrary.Models.Publisher", null)
+                    b.HasOne("MyLibrary.Models.Publishers", null)
                         .WithMany()
                         .HasForeignKey("PublishersId")
                         .OnDelete(DeleteBehavior.Cascade)
